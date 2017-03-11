@@ -1,0 +1,14 @@
+{
+  "name": "wikimapper",
+  "version": "1.0.0",
+  "description": "Chrome extension to convert wikipedia coordinate link to map service links.",
+  "main": "popup.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
