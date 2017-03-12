@@ -2,13 +2,15 @@
   "name": "wikimapper",
   "version": "1.0.0",
   "description": "Chrome extension to convert wikipedia coordinate link to map service links.",
-  "main": "popup.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "main": "script.js",
+  "author": "Ian Paterson",
   "dependencies": {
     "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^2.1.0"
   }
 }
