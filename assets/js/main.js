@@ -1,10 +1,9 @@
-var latitudes = document.getElementsByClassName('latitude');
-var longitudes = document.getElementsByClassName('longitude');
-var coordinatesLinks = document.getElementsByClassName('geo-default');
-var coordinatesLinkSpans = document.getElementsByClassName('geo-dms');
-
 chrome.storage.sync.get('mapService', function(data) {
-  var mapService = data.mapService == null ? 'bing' : data.mapService;
+  var mapService = data.mapService == null ? 'google' : data.mapService;
+  var latitudes = document.getElementsByClassName('latitude');
+  var longitudes = document.getElementsByClassName('longitude');
+  var coordinatesLinks = document.getElementsByClassName('geo-default');
+  var coordinatesLinkSpans = document.getElementsByClassName('geo-dms');
 
   for (var i = 0; i < coordinatesLinks.length; i++) {
     decimalCoords = parseDMS(latitudes[i].innerText, longitudes[i].innerText);
@@ -14,11 +13,20 @@ chrome.storage.sync.get('mapService', function(data) {
         coordinatesLinks[i].parentNode.href = '//maps.google.com/?q=' + decimalCoords.latitude + 
           ',' + decimalCoords.longitude + '&ll=' + decimalCoords.latitude +
           ',' + decimalCoords.longitude + '&z=7';
-        coordinatesLinkSpans[i].innerText = "Google Maps";
         break;
       case 'bing':
         coordinatesLinks[i].parentNode.href = '//bing.com/maps/?v=2&cp=' + decimalCoords.latitude + 
           '~' + decimalCoords.longitude + '&style=r&lvl=12';
+        break;
+    }
+  }
+
+  for (var i = 0; i < coordinatesLinkSpans.length; i++) {
+    switch (mapService) {
+      case 'google':
+        coordinatesLinkSpans[i].innerText = "Google Maps";
+        break;
+      case 'bing':
         coordinatesLinkSpans[i].innerText = "Bing Maps";
         break;
     }
